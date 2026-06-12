@@ -5,8 +5,6 @@
 #include <algorithm>
 #include <stdexcept>
 /*
-* 
-* Scalar multiplication
 * Matrix multiplication
 * Transpose
 * Random initialization
