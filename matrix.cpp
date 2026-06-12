@@ -86,6 +86,37 @@ math::Matrix math::Matrix::operator-(const Matrix& B) const {
     return C;
 }
 
+math::Matrix math::Matrix::operator*(double s) const {
+    Matrix C(rows_, cols_);
+
+    size_t N = data_.size();
+
+    unsigned int T = std::thread::hardware_concurrency();
+    if (T == 0) T = 4;
+
+    std::vector<std::thread> threads;
+    threads.reserve(T);
+
+    size_t chunk = (N + T - 1) / T;
+
+    for (unsigned int t = 0; t < T; t++) {
+        size_t start = t * chunk;
+        size_t end = std::min(start + chunk, N);
+
+        threads.emplace_back([this, &C, start, end, s]() {
+            for (size_t i = start; i < end; i++) {
+                C.data_[i] = this->data_[i] * s;
+            }
+        });
+    }
+
+    for (auto& th : threads) {
+        th.join();
+    }
+
+    return C;
+}
+
 std::ostream& math::operator<<(std::ostream& os, const Matrix& m){
     for (size_t r = 0; r < m.rows_; r++) {
         for (size_t c = 0; c < m.cols_; c++) {

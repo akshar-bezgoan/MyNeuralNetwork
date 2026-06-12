@@ -16,11 +16,15 @@ int main(){
     
     std::cout << "Matrix A:" << std::endl;
     std::cout << A << std::endl;
-    std::cout << "Matrix B:" << std::endl;
-    std::cout << B << std::endl;
-    std::cout << "Matrix A + B:" << std::endl;
-    std::cout << A+B << std::endl;
-    std::cout << "Matrix A - B" << std::endl;
-    std::cout << A-B << std::endl;
+    /*
+    * std::cout << "Matrix B:" << std::endl;
+    * std::cout << B << std::endl;
+    * std::cout << "Matrix A + B:" << std::endl;
+    * std::cout << A+B << std::endl;
+    * std::cout << "Matrix A - B" << std::endl;
+    * std::cout << A-B << std::endl;
+    */
+    std::cout << "Matrix A * 5" << std::endl;
+    std::cout << A*5.0 << std::endl;
     return 0;
 }

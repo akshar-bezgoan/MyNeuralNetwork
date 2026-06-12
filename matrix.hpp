@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <stdexcept>
 /*
-* Subtraction
+* 
 * Scalar multiplication
 * Matrix multiplication
 * Transpose
@@ -25,6 +25,7 @@ namespace math{
         const double& operator()(size_t r, size_t c) const;
         Matrix operator+(const Matrix& B) const;
         Matrix operator-(const Matrix& B) const;
+        Matrix operator*(double s) const;
         friend std::ostream& operator<<(std::ostream& os, const Matrix& m);
 
     };
